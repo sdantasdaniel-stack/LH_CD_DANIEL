@@ -1,12 +1,9 @@
 import pandas as pd
-import re, joblib, numpy as np, pandas as pd, sklearn
-from copy import deepcopy
-
-
-## Arquivo para gerar a previsao do filme informado (explicar no readme.md)
+import re, joblib
+import numpy as np
 
 # carregar modelo treinado
-model = joblib.load("../models/model_imdb_pipeline.pkl")
+model = joblib.load("models/model_imdb_pipeline.pkl")
 
 # filme de exemplo
 novo_filme = {
@@ -29,8 +26,6 @@ novo_filme = {
 # criar dataframe com uma linha
 df_novo = pd.DataFrame([novo_filme])
 
-# aplicar as mesmas transformações que no treino
-from copy import deepcopy
 
 def parse_runtime_to_min(x):
     if pd.isna(x): return np.nan
@@ -42,7 +37,6 @@ def parse_gross_to_usd(x):
     s = re.sub(r"[^\d]", "", str(x))
     return float(s) if s else np.nan
 
-##Funcao que nao existe nesse arquivo, preciso importar de algum lugar
 def build_features(df):
     d = df.copy()
     if "Runtime" in d: d["Runtime_min"] = d["Runtime"].apply(parse_runtime_to_min)
