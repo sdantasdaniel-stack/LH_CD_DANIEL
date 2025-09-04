@@ -1,0 +1,20 @@
+# Ignorar ambientes virtuais
+venv/
+.env/
+
+# Arquivos temporários
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+
+# Arquivos de IDE/Editor
+.vscode/
+.idea/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Logs
+*.log
